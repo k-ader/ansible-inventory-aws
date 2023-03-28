@@ -1,0 +1,7 @@
+---
+# Default group variables for AWS ec2
+
+remote_user: ubuntu
+
+...
+

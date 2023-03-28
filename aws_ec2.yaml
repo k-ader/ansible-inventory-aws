@@ -1,0 +1,22 @@
+plugin: amazon.aws.aws_ec2
+
+cache: yes
+cache_plugin: ansible.builtin.jsonfile
+cache_timeout: 3600
+cache_connection: "/tmp/ec2_inventory"
+cache_prefix: "aws_ec2"
+
+hostnames:
+  - tag:Name
+
+compose:
+  ansible_host: private_ip_address
+
+exclude_filters:
+  - tag:Name:
+      - *eks*
+  - instance-state-name:
+      - terminated
+      - stopping
+      - stopped
+
